@@ -26,7 +26,7 @@ def query_gpt4(prompt, api_key):
     try:
         openai.api_key = api_key  # Configure OpenAI avec la clé utilisateur
         response = openai.ChatCompletion.create(
-            model="gpt-4o-mini",
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": "Tu es un assistant commercial pour Ketil media."},
                 {"role": "user", "content": prompt}
