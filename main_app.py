@@ -3,9 +3,9 @@ import os
 import PyPDF2
 from docx import Document
 import streamlit as st
+import os
 
-# Configuration de la clé API (assurez-vous d'avoir défini OPENAI_API_KEY comme variable d'environnement)
-openai.api_key = "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"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Fonction pour extraire le texte des fichiers PDF
 def extract_text_from_pdf(file_path):

@@ -1,5 +1,5 @@
 # Ignorer les données de base de connaissances
-base de connaissance/
+#base de connaissance/
 
 # Ignorer les clés API locales
 .env
