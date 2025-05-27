@@ -4,8 +4,12 @@ import PyPDF2
 from docx import Document
 import streamlit as st
 import os
+# Récupérer la clé API en local ou sur Streamlit Cloud
+openai.api_key = os.getenv("OPENAI_API_KEY") or st.secrets.get("OPENAI_API_KEY")
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+if not openai.api_key:
+    st.error("Clé API OpenAI non trouvée. Veuillez configurer la variable d'environnement OPENAI_API_KEY ou le secret Streamlit.")
+    st.stop()
 
 # Fonction pour extraire le texte des fichiers PDF
 def extract_text_from_pdf(file_path):
@@ -34,7 +38,7 @@ def query_gpt4(prompt):
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=500,  # Limiter le nombre de tokens pour économiser des crédits
+            max_tokens=700,  # Limiter le nombre de tokens pour économiser des crédits
         )
         return response['choices'][0]['message']['content']
     except Exception as e:
