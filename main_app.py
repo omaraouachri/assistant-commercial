@@ -1,8 +1,8 @@
-import openai
 import os
 import PyPDF2
 from docx import Document
 import streamlit as st
+from google import genai
 
 # Fonction pour extraire le texte des fichiers PDF
 def extract_text_from_pdf(file_path):
@@ -21,22 +21,18 @@ def extract_text_from_word(file_path):
         text += paragraph.text + "\n"
     return text
 
-# Fonction pour interroger OpenAI GPT-4
-def query_gpt4(prompt, api_key):
+# Fonction pour interroger le modèle Gemini
+def query_gemini(prompt, api_key):
     try:
-        openai.api_key = api_key  # Configure OpenAI avec la clé utilisateur
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "Tu es un assistant commercial pour Ketil media."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.7,
-            max_tokens=700,
+        # Configuration du client Gemini
+        client = genai.Client(api_key=api_key)
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt
         )
-        return response['choices'][0]['message']['content']
+        return response.text
     except Exception as e:
-        return f"Erreur lors de la requête : {str(e)}"
+        return f"Erreur lors de la requête Gemini : {str(e)}"
 
 # Chargement des documents et construction de la base de connaissances
 def load_documents():
@@ -69,17 +65,17 @@ def main():
     col1, col2, col3 = st.columns([1, 6, 1])
 
     with col1:
-        st.image("ketil_media_logo.png",  width=100)
+        st.image("ketil_media_logo.png", width=100)
 
     with col3:
-        st.image("athling_logo.png",  width=140)
+        st.image("athling_logo.png", width=140)
 
     st.title("Assistant commercial Ketil media")
     st.write("Je suis là pour vous aider à rédiger des emails, des recommandations commerciales, et préparer vos rendez-vous.")
-    st.info("Version gratuite optimisée pour limiter l'usage des crédits OpenAI.")
+    st.info("Version gratuite optimisée pour limiter l'usage des crédits API.")
 
     # Champ pour la clé API
-    api_key = st.text_input("Entrez votre clé API OpenAI :", type="password")
+    api_key = st.text_input("Entrez votre clé API Google Gemini :", type="password")
 
     # Vérification de la clé API
     if not api_key:
@@ -93,14 +89,18 @@ def main():
         if user_input.strip():
             # Construire le prompt avec la base de connaissances
             prompt = f"""
+            Vous êtes un assistant commercial expert de Ketil Media et Radio Classique.
+            Utilisez la "Base de connaissances sur Radio Classique" fournie ci-dessous pour répondre précisément à la "Question utilisateur".
+            Si l'information n'est pas dans la base de connaissances, indiquez que vous ne pouvez pas répondre avec les informations disponibles.
+
             Base de connaissances sur Radio Classique :
             {knowledge_base}
             
             Question utilisateur :
             {user_input}
             """
-            # Obtenir la réponse de GPT-4
-            response = query_gpt4(prompt, api_key)
+            # Obtenir la réponse de Gemini
+            response = query_gemini(prompt, api_key)
             st.write("### Réponse :")
             st.write(response)
         else:

@@ -56,7 +56,6 @@ Vérifiez que les images ketil_media_logo.png et athling_logo.png sont présente
 
 ### Étape 4 : Lancer l'application
 ```bash
-export OPENAI_API_KEY="" # mettre votre clé API openai 
 
 streamlit run main_app.py
 ```

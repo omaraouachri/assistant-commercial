@@ -1,4 +1,4 @@
-openai==0.28.0
+google-genai
 PyPDF2
 python-docx
 streamlit
