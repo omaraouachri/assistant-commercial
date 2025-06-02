@@ -94,6 +94,8 @@ def main():
             Si l'information n'est pas dans la base de connaissances, indiquez que vous ne pouvez pas répondre avec les informations disponibles.
             N'utilisez aucune information provenant d'Internet, de données externes ou d'autres sources en dehors de cette base de connaissances.
             IMPORTANT : Ne mentionnez aucun chiffre ou valeur numérique (y compris les pourcentages) provenant de la base de connaissances dans votre réponse. Reformulez chaque chiffre de manière qualitative ou contextuelle. Par exemple, au lieu de "50%", dites "une moitié" ou "une proportion importante".
+            Rédigez une réponse bien développée, avec une belle écriture, un langage fluide et clair, et des phrases bien structurées.
+
             Base de connaissances sur Radio Classique :
             {knowledge_base}
             
