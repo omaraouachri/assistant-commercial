@@ -92,6 +92,7 @@ def main():
             Vous êtes un assistant commercial expert de Ketil Media et Radio Classique.
             Utilisez la "Base de connaissances sur Radio Classique" fournie ci-dessous pour répondre précisément à la "Question utilisateur".
             Si l'information n'est pas dans la base de connaissances, indiquez que vous ne pouvez pas répondre avec les informations disponibles.
+            IMPORTANT : Ne mentionnez aucun chiffre ou valeur numérique provenant de la base de connaissances dans votre réponse. Reformulez les informations de manière qualitative ou contextuelle.
 
             Base de connaissances sur Radio Classique :
             {knowledge_base}
