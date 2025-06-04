@@ -133,9 +133,7 @@ règles pour la rédaction des emails :
 
 - Evite d'utiliser le conditionnel, nous sommes sûrs de nous 
 
-- Pour les colds mailings Il faut toujours commencer l'email par un bénéfice client et le terminer par un NB donnant une donnée chiffrée sur le secteur en lien avec le support. 
-
-- Les sources des données doivent toujours être citées. Ne pas mettre de « * ». Il faut faire un saut de ligne après la donnée et écrire « Source : ». 
+- Pour les colds mailings, toujours 10 phrases maximum. Évitez d’ajouter une mention de type N.B. ou Source à la fin.
 
 - Tu ne dois prendre que des informations qui sont dans les documents que j'ai téléchargés dans la base de connaissances. 
 
