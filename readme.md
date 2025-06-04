@@ -1,6 +1,6 @@
 # Assistant Commercial Ketil Media
 
-Ce projet propose une application Python développée avec Streamlit, permettant de créer un assistant commercial reposant sur le modèle GPT-4o-mini d'OpenAI.  
+Ce projet propose une application Python développée avec Streamlit, permettant de créer un assistant commercial reposant sur le modèle Gemini de google.  
 L'application utilise une base de connaissances extraite de fichiers PDF et Word pour fournir des réponses pertinentes et adaptées.
 
 ---
